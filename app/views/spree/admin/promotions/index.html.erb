@@ -1,0 +1,72 @@
+<%= content_for :page_title, 'Promotions' %>
+
+<div class="admin-promotions">
+  <div class="header">
+    <h1>Promotions</h1>
+    <%= link_to 'New Promotion', new_admin_promotion_path, class: 'button primary' %>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Conditions</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @promotions.each do |promotion| %>
+        <tr>
+          <td><%= promotion.name %></td>
+          <td><%= promotion.description %></td>
+          <td><%= promotion.conditions %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_promotion_path(promotion), class: 'button small' %>
+            <%= link_to 'Delete', admin_promotion_path(promotion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .admin-promotions {
+    margin: 20px;
+  }
+  .admin-promotions .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .admin-promotions .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .admin-promotions .table th, .admin-promotions .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .admin-promotions .table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  .button {
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+  }
+  .button.primary {
+    background-color: #007bff;
+  }
+  .button.small {
+    padding: 4px 8px;
+    background-color: #007bff;
+  }
+  .button.danger {
+    background-color: #dc3545;
+  }
+</style>

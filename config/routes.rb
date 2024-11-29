@@ -8,16 +8,11 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as Spree relies on it being
   # the default of "spree".
   mount Spree::Core::Engine, at: '/'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  # https://github.com/basecamp/mission_control-jobs?tab=readme-ov-file#basic-configuration
-  mount MissionControl::Jobs::Engine, at: "/jobs"
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  Spree::Core::Engine.routes.draw do
+    namespace :api, defaults: { format: 'json' } do
+      resources :promotions
+    end
+  end
 end

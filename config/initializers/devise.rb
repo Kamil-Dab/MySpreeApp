@@ -1,1 +1,1 @@
-Devise.secret_key = Rails.application.credentials.secret_key_base
+Devise.secret_key = "0e484f5a477a1d94982d156bd591a2b6638521705eabefac2f36c7ee8a65c1392383d0dbf3aa4f8a8fccf7f971b129f1d917"
